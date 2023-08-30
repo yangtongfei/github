@@ -74,6 +74,7 @@ Git仓库初始化
 		
 	删除分支
 		git branch -d "分支名"	完成删除分支
+		git branch -D "分支名"	强行删除分支
 	
 保存现场
 	git stash 	保存当前修改现场
