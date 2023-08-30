@@ -75,4 +75,9 @@ Git仓库初始化
 	删除分支
 		git branch -d "分支名"	完成删除分支
 	
-	
+保存现场
+	git stash 	保存当前修改现场
+	git stash list	查看保存的现场
+	git stash apply 恢复现场，恢复后stash内容不删除，需要git stash drop删除
+	git stash pop	恢复现场，并且删除stash内容
+
