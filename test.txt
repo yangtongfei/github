@@ -16,7 +16,11 @@ Git仓库初始化
 查看历史记录
 	git log
 
+查看历史命令
+	git reflog
+
 版本回退
 	git reset --hard HEAD^(一个^代表回退一个版本，回退一百个版本可以这样写HEAD~100)
 	git reset --hard "指定版本号码"
 
+	版本回退后可通过 git reflog 查看历史使用的命令找到, 版本回退前的版本号
