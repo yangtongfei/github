@@ -64,7 +64,15 @@ Git仓库初始化
 	合并分支
 		先切换要合并到的分支, 假如有 dev这个新建的分支， 在该分支完成工作后，切换到主分支master后，使用命令git merge dev 完成合并dev分支到maseer
 		git merge "分支名"
-	
+		
+		合并分支模式
+			正常合并会使用 Fast forward 模式， 但这种模式下，删除分支后，会丢掉分支信息
+
+			强制禁用 Fast forward 模式 git 会在合并的时候生成一个新的commit，所以要在强制禁用Fast forward模式里 加入commit 的"-m" 参数
+			
+			git merge --no-ff -m "文件说明commit描述" dev 	
+		
 	删除分支
 		git branch -d "分支名"	完成删除分支
-
+	
+	
