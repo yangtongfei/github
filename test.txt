@@ -31,3 +31,14 @@ Git仓库初始化
                 1.文件修改后还没有放到暂存区，现在撤销修改就回到和版本库一模一样的状态
               	2.文件已经添加到暂存区，又作了修改，现在撤销就回到添加到暂存区后的状态
 
+链接远程仓库
+	git remote add "添加远程库名字" git@github.com:"github账户名"/"远程仓库名".git 	 本地仓库和远程仓库关联
+	
+	git push -u "远程库名" master	第一次推送，加上-u参数，以后推送可以直接这样 git push "name" master
+	
+
+删除与远程仓库的链接
+	git remote -v 查看远程库信息
+	
+	git remote “name” 根据名字删除与远程库的链接
+ 
