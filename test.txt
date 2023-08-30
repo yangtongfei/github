@@ -1,1 +1,22 @@
-连猴子都懂的git命令
+Git命令
+
+Git仓库初始化
+	安装git后，新建一个目录，进入该目录使用git init命令
+
+查看仓库当前状态
+	git status
+
+查看文件具体修改内容
+	git diff "filename"
+
+添加文件到Git仓库
+	先在目录下编辑一个文件， 然后使用git add "filename"命令 可添加多个文件
+	再用git commit -m "本次提交文件的说明" 
+
+查看历史记录
+	git log
+
+版本回退
+	git reset --hard HEAD^(一个^代表回退一个版本，回退一百个版本可以这样写HEAD~100)
+	git reset --hard "指定版本号码"
+
