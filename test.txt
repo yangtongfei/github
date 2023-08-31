@@ -12,8 +12,8 @@ Git仓库初始化
 	git diff "filename"
 
 
-添加文件到Git仓库
-	先在目录下编辑一个文件， 然后使用git add "filename"命令 可添加多个文件
+提交文件到Git本地仓库
+	先在目录下编辑一个文件， 然后使用git add "filename"命令 可一次提交多个文件
 	再用git commit -m "本次提交文件的说明" 
 
 
@@ -62,23 +62,41 @@ Git仓库初始化
 		git checkout -b "分支名" 或 git switch -c "分支名"	上面两个命令的结合，创建分支并切换
 	
 	合并分支
-		先切换要合并到的分支, 假如有 dev这个新建的分支， 在该分支完成工作后，切换到主分支master后，使用命令git merge dev 完成合并dev分支到maseer
+		先切换要合并到的分支, 假如有 dev这个新建的分支， 在该分支完成工作,提交到本地仓库后，切换到主分支master后，使用命令git merge dev 完成合并dev分支到maseer
 		git merge "分支名"
-		
+	
+		分支冲突
+			合并分支时，两个分支同时提交修改后的文件，会产生冲突，需要手动更改文件不同的地方
+			
 		合并分支模式
 			正常合并会使用 Fast forward 模式， 但这种模式下，删除分支后，会丢掉分支信息
 
 			强制禁用 Fast forward 模式 git 会在合并的时候生成一个新的commit，所以要在强制禁用Fast forward模式里 加入commit 的"-m" 参数
 			
 			git merge --no-ff -m "文件说明commit描述" dev 	
-		
-	删除分支
+	
+删除分支
 		git branch -d "分支名"	完成删除分支
 		git branch -D "分支名"	强行删除分支
 	
+
 保存现场
 	git stash 	保存当前修改现场
 	git stash list	查看保存的现场
 	git stash apply 恢复现场，恢复后stash内容不删除，需要git stash drop删除
 	git stash pop	恢复现场，并且删除stash内容
 
+
+推送
+	将分支的本地仓库里所有的提交推送到远程仓库
+	git push "远程仓库名" "分支名"
+
+
+多人协作
+	另一台电脑需要在分支上开发，必须创建远程库的分支到本地，使用这个命令 git checkout -b "分支名" "远程库名"/"分支名"
+	
+	两台电脑同时推送提交，会冲突，需要先建立本地分支与远程库分支链接 git branch --set-upstream-to="远程库名"/"分支名" "分支名"
+	
+	再用 git pull 把最新的提交从 "远程库"/“分支” 抓下来, 再合并,如果出现冲突，手动更改文件不同的地方后，文件就可以推送
+
+	
