@@ -1,3 +1,6 @@
+目前有两个远程库 github 和 gitee
+
+
 Git命令
 
 Git仓库初始化
