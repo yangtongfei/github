@@ -1,3 +1,5 @@
 
 chown "name" "filename" 更改文件或目录属于哪个用户
 chown :"name" "filename" 更改文件或目录的用户组
+
+echo "hello lose" | tr a-zA-Z n-za-mN-ZA-M   文本模糊处理(简单加密)
