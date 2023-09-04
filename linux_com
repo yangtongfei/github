@@ -5,3 +5,5 @@ chown :"name" "filename" 更改文件或目录的用户组
 echo "hello lose" | tr a-zA-Z n-za-mN-ZA-M   文本模糊处理(简单加密)
 
 在/usr/local/sbin 下编写脚本，可以直接输入文件名执行脚本，不需要再指定路径，如 ls
+
+du -sh 查看当前文件或目录大小
