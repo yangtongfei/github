@@ -43,3 +43,5 @@ docker 容器数据卷
 	
 	容器数据卷的继承和共享
 	docker run -it --privileged=true --volumes-from "要继承的容器名或ID，如(u1)" --name="新容器名" "镜像名"  只继承父类挂载的数据卷的数据和权限 
+	
+	运行镜像时一定要挂载容器数据卷，防止数据丢失
