@@ -62,13 +62,15 @@ mysql 启动
 
 	mysql需要在本地数据卷配置文件,假如在本地的配置文件数据卷是/zzyyuse/mysql/conf,
 	则需要在conf目录下添加my.cnf文件，文件内容为：
-
-	[client]
-	default_character_set=utf8
-	[mysqld]
-	collation_server = utf8_general_ci
-	character_set_server = utf8
-
+|	|	|	|	|	|	|	|	|	|	|	|	|	|	|
+V	V	V	V	V	V	V	V	V	V	V	V	V	V	V
+[client]
+default_character_set=utf8
+[mysqld]
+collation_server = utf8_general_ci
+character_set_server = utf8
+/\	/\	/\	/\	/\	/\	/\	/\	/\	/\
+||	||	||	||	||	||	||	||	||	||
 	添加该文件，使mysql支持utf8编码，就可以用中文
 
 redis 启动
