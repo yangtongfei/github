@@ -10,3 +10,36 @@ docker 导入导出
 
 docker 在镜像上添加东西，再将添加后的镜像保存为一个新镜像
 	docker commit -m="新镜像的描述信息" -a="作者名" "原镜像名或ID" "新镜像名":"版本号"
+
+
+创建和启动一个私服库
+	docker pull registry	先拉取这个镜像
+
+	docker run -d -p 5000:5000 "-v '本地要创建的存放私服库的目录':/tmp/registry --privileged=true" registry	
+	启动registry镜像，-d让镜像在后台运行，-p是指定端口号, -v是挂载的意思, "--privileged=true"是获取权限,达到在私服库拥有root权限作用，双引号如果不写会默认配置到/var/lib/regitstry目录下
+
+
+docker 把镜像添加到私服库
+	docker tag "镜像名":"版本号" "docker的ip地址（用ifconfig可以查到）:"设定registry的端口号"/"镜像名":"版本号"		先将镜像文件修改为私服库规定的格式
+
+	docker默认不支持http形式的推送,需要修改/etc/docker/daemon.json配置文件，将"insecure-registries": ["dockerIP地址"]写入配置文件，如果在添加这条命令前还有其他命令，需要在上面命令的末尾加上,
+
+	docker push "镜像名":"版本号" 	推送到私服库
+
+查看私服库
+	curl -XGET http://"docker的IP地址":"启用的端口号"/v2/_catalog
+	
+	docker pull "镜像名":"版本号"  从私服库上拉取镜像
+
+
+docker 容器数据卷
+	容器数据卷可实时将容器里的数据，拷贝到本地主机的容器卷位置
+	docker run -it --privileged=true -v "本地主机挂载位置，如(/tmp/host_data)":"docker镜像容器挂载位置(/tmp/docker_data)" --name="容器名"(--name参数可不写) "镜像名"  创建一个容器的数据卷
+	
+	docker inspect “容器名或ID” 查看目录是否挂载成功
+	
+	将容器改为只读
+	docker run -it --privileged=true -v "本地主机挂载位置":"docker镜像容器挂载位置":ro --name="容器名"(--name参数可不写) "镜像名"  在docker镜像容器挂载位置后加上:ro就设置为容器只读,就不可以在挂载的目录下写
+	
+	容器数据卷的继承和共享
+	docker run -it --privileged=true --volumes-from "要继承的容器名或ID，如(u1)" --name="新容器名" "镜像名"  只继承父类挂载的数据卷的数据和权限 
