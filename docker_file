@@ -15,8 +15,8 @@ docker 在镜像上添加东西，再将添加后的镜像保存为一个新镜�
 创建和启动一个私服库
 	docker pull registry	先拉取这个镜像
 
-	docker run -d -p 5000:5000 "-v '本地要创建的存放私服库的目录':/tmp/registry --privileged=true" registry	
-	启动registry镜像，-d让镜像在后台运行，-p是指定端口号, -v是挂载的意思, "--privileged=true"是获取权限,达到在私服库拥有root权限作用，双引号如果不写会默认配置到/var/lib/regitstry目录下
+	docker run -d -p "设置本地主机端口号，如5000":"设置容器端口，如5000" -v '本地要创建的存放私服库的目录':'容器设置存放私服库的目录' --privileged=true registry	
+	启动registry镜像，-d让镜像在后台运行，-p是指定端口号, -v是挂载的意思, "--privileged=true"是获取权限,达到在私服库拥有root权限作用
 
 
 docker 把镜像添加到私服库
