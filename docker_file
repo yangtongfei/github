@@ -45,3 +45,31 @@ docker 容器数据卷
 	docker run -it --privileged=true --volumes-from "要继承的容器名或ID，如(u1)" --name="新容器名" "镜像名"  只继承父类挂载的数据卷的数据和权限 
 	
 	运行镜像时一定要挂载容器数据卷，防止数据丢失
+
+
+tomcat 启动
+	docker run -d -p 8080:8080 --name=t1 tomcat  最新版的tomcat需要进入容器将webapps删除，修改webapps.dist为webapps，mv webapps.dist webapps, 旧版不需要更改
+
+mysql 启动
+	简单启动 docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD="root密码设置" -d mysql
+	常规启动 docker run -d -p 3306:3306 --privileged=true  
+			-v /“本地数据卷位置”(如/zzyyuse/mysql/log):/var/log/mysql	日志文件
+			-v /"本地数据卷位置":/var/lib/mysql 						容器数据
+			-v /"本地数据卷位置":/etc/mysql/conf.d  					配置文件
+			-e MYSQL_ROOT_PASSWORD="root密码设置"
+			--name=m1(可不加--name 参数)
+			mysql:"版本号"(最新版mysql可省略版本号)
+
+	mysql需要在本地数据卷配置文件,假如在本地的配置文件数据卷是/zzyyuse/mysql/conf,
+	则需要在conf目录下添加my.cnf文件，文件内容为：
+
+	[client]
+	default_character_set=utf8
+	[mysqld]
+	collation_server = utf8_general_ci
+	character_set_server = utf8
+
+	添加该文件，使mysql支持utf8编码，就可以用中文
+
+redis 启动
+	简单启动 docker run -d -p 6379:6379 redis
