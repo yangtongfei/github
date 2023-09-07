@@ -52,13 +52,13 @@ tomcat 启动
 
 mysql 启动
 	简单启动 docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD="root密码设置" -d mysql
-	常规启动 docker run -d -p 3306:3306 --privileged=true  
+	常规启动 docker run -p 3306:3306 --privileged=true  
 			-v /“本地数据卷位置”(如/zzyyuse/mysql/log):/var/log/mysql	日志文件
 			-v /"本地数据卷位置":/var/lib/mysql 						容器数据
 			-v /"本地数据卷位置":/etc/mysql/conf.d  					配置文件
 			-e MYSQL_ROOT_PASSWORD="root密码设置"
 			--name=m1(可不加--name 参数)
-			mysql:"版本号"(最新版mysql可省略版本号)
+			-d mysql:"版本号"(最新版mysql可省略版本号)
 
 	mysql需要在本地数据卷配置文件,假如在本地的配置文件数据卷是/zzyyuse/mysql/conf,
 	则需要在conf目录下添加my.cnf文件，文件内容为：
