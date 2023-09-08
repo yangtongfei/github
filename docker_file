@@ -75,3 +75,10 @@ character_set_server = utf8
 
 redis 启动
 	简单启动 docker run -d -p 6379:6379 redis
+
+
+docker自定义镜像脚本
+	制作镜像脚本需要，创建一个目录，进入该目录，编写名为Dockerfile的文件，镜像脚本需要写进Dockerfile文件里 
+	github,gitee仓库有具体制作脚本模板
+	docker build -t "自定义镜像名":"版本号" . 	脚本写好后用这个命令运行,"."代表运行当前文件下的Dockerfile脚本文件
+
