@@ -124,3 +124,8 @@ docker 网络模式
 		docker network rm "网络名" 删除网络
 		docker network create "自定义网络名"
 		两个镜像在自定以网络里可以互相ping通镜像名	
+
+
+docker-compose 概念
+	docker-compose 管理docker容器
+	
