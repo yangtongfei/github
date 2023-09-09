@@ -119,3 +119,8 @@ docker 网络模式
 	
 	container	新创建的容器不会创建自己的网卡和配置自己的IP，而是和一个指定的容器共享IP，端口范围等
 	
+	docker 自定义网络 
+		docker network ls 查看有什么网络模式
+		docker network rm "网络名" 删除网络
+		docker network create "自定义网络名"
+		两个镜像在自定以网络里可以互相ping通镜像名	
