@@ -129,3 +129,6 @@ docker 网络模式
 docker-compose 概念
 	docker-compose 管理docker容器
 	
+dokcer portainer的启动
+	docker run -d -p 8000:8000 -p 9000:9000 --name portainer --restart=always --privileged=true -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer	
+	挂入后台之后，进入浏览器数据IP加上9000端口，输入用户名：admin,和密码即可登陆,必须加入--privileged=true命令，否则会出现权限不足问题,导致无法进入
