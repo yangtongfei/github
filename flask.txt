@@ -1,3 +1,5 @@
+Flask是一个基于Python实现的web开发的'微'框架
+
 HTTP方法
 	GET。用于从服务器获取资源。在Web浏览器中输入URL并按下Enter键时，使用的就是GET方法。GET请求会将请求参数附加在URL后面，以“?”符号分隔。
 	
