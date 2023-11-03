@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<center>
+<div style="width:1500px;height:1500px;background-color:red;">
+	<form method='POST'>	
+			{{ form.name.label }} 
+			{{ form.name }}
+			</br>
+			
+			{{ form.password.label }} 
+			{{ form.password }} 
+			</br>
+			
+			{{ form.submit }}
+	</form>
+</div>
+</center>
+	
+{% endblock %}
