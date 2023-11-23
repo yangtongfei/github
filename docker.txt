@@ -50,7 +50,7 @@ docker 容器数据卷
 tomcat 启动
 	docker run -d -p 8080:8080 --name=t1 tomcat  最新版的tomcat需要进入容器将webapps删除，修改webapps.dist为webapps，mv webapps.dist webapps, 旧版不需要更改
 
-mysql 启动
+mysql 启动	
 	简单启动 docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD="root密码设置" -d mysql
 	常规启动 docker run -p 3306:3306 --privileged=true  
 			-v /“本地数据卷位置”(如/zzyyuse/mysql/log):/var/log/mysql	日志文件
@@ -59,6 +59,8 @@ mysql 启动
 			-e MYSQL_ROOT_PASSWORD="root密码设置"
 			--name=m1(可不加--name 参数)
 			-d mysql:"版本号"(最新版mysql可省略版本号)
+
+	进入容器 docker exec -it "容器名" bash 		登录mysql   mysql -u root -p
 
 	mysql需要在本地数据卷配置文件,假如在本地的配置文件数据卷是/zzyyuse/mysql/conf,
 	则需要在conf目录下添加my.cnf文件，文件内容为：
@@ -75,6 +77,8 @@ character_set_server = utf8
 
 redis 启动
 	简单启动 docker run -d -p 6379:6379 redis
+
+	登录redis  redis-cli
 
 
 docker自定义镜像脚本
