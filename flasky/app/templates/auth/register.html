@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+<div style="width: 300px; background-color: lightgrey; margin:0 auto; padding: 10px;">
+	<form method='POST'>	
+		{{ form.name.label }}
+		</br>
+		{{ form.name }}
+		</br>
+	
+		{{ form.password.label }}
+		</br>
+		{{ form.password }}
+		</br>
+	
+		{{ form.two_password.label}}
+		</br>
+		{{ form.two_password }}
+		</br>
+	
+		</br>
+		{{ form.submit }}
+	</form>
+</div>
+{% endblock %}
