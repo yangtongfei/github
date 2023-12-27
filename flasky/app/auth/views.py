@@ -33,7 +33,7 @@ def login():
 	form = loginform()
 	if request.method == 'POST' :
 		user = User.query.filter_by(name=form.name.data).first()
-		if user is None or user.query.filter_by(password=form.password.data).first() is None:
+		if user is None or user.get_password(form.password.data) is False:
 			flash('用户或密码无效')
 			return render_template('auth/login.html', form=form)
 		login_user(user)

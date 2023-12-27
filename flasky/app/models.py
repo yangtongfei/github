@@ -11,16 +11,24 @@ class User(UserMixin, db.Model):
 	__tablename__ = 'users'
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(64), unique=True, nullable=False)
-	password = db.Column(db.String(128))
+	password_hash = db.Column(db.String(128))
 
 	roles = db.relationship('Role', backref='user', lazy='dynamic')
+
+
+
+	@property
+	def password(self):
+		raise AttributeError('password is not a readable attribute')
+
+
+	@password.setter
+	def password(self, password):
+		self.password_hash = generate_password_hash(password)
 	
 
-#	def password(self, password):
-#		self.password_hash = generate_password_hash(password)
-#	
-#	def get_password(self, password):
-#		return check_password_hash(self.password_hash, password)	
+	def get_password(self, password):
+		return check_password_hash(self.password_hash, password)	
 	
 
 
